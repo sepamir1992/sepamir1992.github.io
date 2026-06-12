@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+
+const photos = (await getCollection('photos')).sort((a, b) => {
+  const aTime = a.data.date?.valueOf() ?? 0;
+  const bTime = b.data.date?.valueOf() ?? 0;
+  return bTime - aTime;
+});
+
+const categories = [...new Set(photos.map((p) => p.data.category))];
+---
+
+<BaseLayout
+  title="Photography"
+  description="Selected photography — travel, nature, city life, and moments from research events."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <SectionHeader
+      eyebrow="Beyond Research"
+      title="Photography"
+      subtitle="Selected frames from travel, nature, city life, and research events."
+    />
+
+    {
+      categories.length > 1 && (
+        <div class="reveal mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter photos by category">
+          <button
+            type="button"
+            data-filter="all"
+            class="photo-filter rounded-full bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white"
+            aria-pressed="true"
+          >
+            All
+          </button>
+          {categories.map((category) => (
+            <button
+              type="button"
+              data-filter={category}
+              class="photo-filter rounded-full border border-slate-200 px-4 py-1.5 text-sm font-semibold capitalize text-slate-600 hover:border-brand-400 hover:text-brand-600 dark:border-ink-700 dark:text-slate-300 dark:hover:border-brand-600 dark:hover:text-brand-400"
+              aria-pressed="false"
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      )
+    }
+
+    <div id="photo-collection">
+      <PhotoGrid photos={photos} />
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ categoriesByIndex: photos.map((p) => p.data.category) }}>
+    // Tag each rendered figure with its category, then wire up the filter buttons.
+    const figures = document.querySelectorAll('#photo-collection figure');
+    figures.forEach((fig, i) => {
+      fig.dataset.category = categoriesByIndex[i];
+    });
+
+    const buttons = document.querySelectorAll('.photo-filter');
+    const activeClasses = ['bg-brand-600', 'text-white'];
+    const inactiveClasses = [
+      'border',
+      'border-slate-200',
+      'text-slate-600',
+      'dark:border-ink-700',
+      'dark:text-slate-300',
+    ];
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.classList.remove(...activeClasses);
+          b.classList.add(...inactiveClasses);
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add(...activeClasses);
+        btn.classList.remove(...inactiveClasses);
+        btn.setAttribute('aria-pressed', 'true');
+
+        const filter = btn.dataset.filter;
+        figures.forEach((fig) => {
+          fig.style.display = filter === 'all' || fig.dataset.category === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</BaseLayout>

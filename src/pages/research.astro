@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ResearchAreaCard from '../components/ResearchAreaCard.astro';
+
+const research = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+
+const rendered = await Promise.all(
+  research.map(async (area) => {
+    const { Content } = await render(area);
+    return { area, Content, hasBody: area.body !== undefined && area.body.trim().length > 0 };
+  })
+);
+---
+
+<BaseLayout
+  title="Research"
+  description="Research areas: multipath video streaming, AI/ML for networks, federated learning, intent-based networking, and LLM/RAG systems."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <SectionHeader
+      eyebrow="Research"
+      title="Research areas"
+      subtitle="My research designs intelligent, adaptive communication systems by combining networking, reinforcement learning, federated learning, and large language models."
+    />
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        research.map((area) => (
+          <ResearchAreaCard
+            title={area.data.title}
+            description={area.data.description}
+            icon={area.data.icon}
+          />
+        ))
+      }
+    </div>
+
+    {
+      rendered.some(({ hasBody }) => hasBody) && (
+        <div class="mt-20 space-y-12">
+          <h2 class="reveal text-2xl font-bold text-slate-900 dark:text-white">In more depth</h2>
+          {rendered
+            .filter(({ hasBody }) => hasBody)
+            .map(({ area, Content }) => (
+              <article class="reveal border-l-4 border-brand-500 pl-6">
+                <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                  {area.data.title}
+                </h3>
+                <div class="prose-body leading-relaxed text-slate-600 dark:text-slate-400">
+                  <Content />
+                </div>
+              </article>
+            ))}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

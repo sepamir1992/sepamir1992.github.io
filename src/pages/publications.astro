@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+
+const publications = (await getCollection('publications')).sort(
+  (a, b) => b.data.year - a.data.year
+);
+
+const years = [...new Set(publications.map((p) => p.data.year))].sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title="Publications"
+  description="Peer-reviewed publications, preprints, and works in progress on multipath video streaming, federated learning, and intelligent networking."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <SectionHeader
+      eyebrow="Research Output"
+      title="Publications"
+      subtitle="Peer-reviewed papers, preprints, and works in progress."
+    />
+
+    <div class="space-y-12">
+      {
+        years.map((year) => (
+          <div>
+            <h2 class="reveal mb-5 flex items-center gap-4 text-2xl font-bold text-slate-900 dark:text-white">
+              {year}
+              <span class="h-px flex-1 bg-slate-200 dark:bg-ink-800" aria-hidden="true" />
+            </h2>
+            <div class="space-y-5">
+              {publications
+                .filter((p) => p.data.year === year)
+                .map((pub) => (
+                  <PublicationCard publication={pub} />
+                ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

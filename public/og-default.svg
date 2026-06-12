@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#16203a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1050" cy="100" r="220" fill="#2563eb" opacity="0.25"/>
+  <circle cx="120" cy="560" r="200" fill="#f59e0b" opacity="0.15"/>
+  <text x="90" y="290" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#ffffff">Amir Sepahi</text>
+  <text x="90" y="350" font-family="Arial, sans-serif" font-size="30" fill="#93c5fd">Ph.D. Candidate · Electrical &amp; Computer Engineering</text>
+  <text x="90" y="395" font-family="Arial, sans-serif" font-size="30" fill="#93c5fd">University of Victoria</text>
+  <text x="90" y="470" font-family="Arial, sans-serif" font-size="24" fill="#a3b6d4">AI/ML for Networks · Multipath Video Streaming · Federated Learning</text>
+</svg>

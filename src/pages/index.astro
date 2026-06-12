@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import ResearchAreaCard from '../components/ResearchAreaCard.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import ContactCard from '../components/ContactCard.astro';
+import profile from '../data/profile.json';
+
+const research = (await getCollection('research')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const featuredProjects = (await getCollection('projects', ({ data }) => data.featured))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const featuredPublications = (await getCollection('publications', ({ data }) => data.featured))
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 3);
+
+const featuredPhotos = (await getCollection('photos', ({ data }) => data.featured)).slice(0, 6);
+
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+
+const formatNewsDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<BaseLayout title={profile.name} description={profile.tagline}>
+  <Hero />
+
+  <!-- About -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="about-heading">
+    <SectionHeader eyebrow="About" title="A short introduction" />
+    <div class="reveal grid items-start gap-8 lg:grid-cols-[2fr_1fr]">
+      <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+        {profile.bioShort}
+      </p>
+      <a
+        href="/about/"
+        class="inline-flex w-fit items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 dark:border-ink-700 dark:text-slate-300 dark:hover:border-brand-600 dark:hover:text-brand-400"
+      >
+        More about me
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Research interests -->
+  <section class="bg-slate-50 dark:bg-ink-900/30" aria-labelledby="research-heading">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <SectionHeader
+        eyebrow="Research"
+        title="Research interests"
+        subtitle="My work sits at the intersection of networking, machine learning, and systems."
+      />
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          research
+            .slice(0, 4)
+            .map((area) => (
+              <ResearchAreaCard
+                title={area.data.title}
+                description={area.data.description}
+                icon={area.data.icon}
+              />
+            ))
+        }
+      </div>
+      <div class="reveal mt-8 text-center">
+        <a
+          href="/research/"
+          class="text-sm font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+        >
+          Explore all research areas <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="projects-heading">
+    <SectionHeader
+      eyebrow="Projects"
+      title="Featured projects"
+      subtitle="Selected research systems and engineering work."
+    />
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="reveal mt-8 text-center">
+      <a
+        href="/projects/"
+        class="text-sm font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+      >
+        View all projects <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Selected publications -->
+  <section class="bg-slate-50 dark:bg-ink-900/30" aria-labelledby="publications-heading">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <SectionHeader
+        eyebrow="Publications"
+        title="Selected publications"
+        subtitle="Peer-reviewed papers, preprints, and works in progress."
+      />
+      <div class="space-y-5">
+        {featuredPublications.map((pub) => <PublicationCard publication={pub} />)}
+      </div>
+      <div class="reveal mt-8 text-center">
+        <a
+          href="/publications/"
+          class="text-sm font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+        >
+          Full publication list <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photography preview -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="photography-heading">
+    <SectionHeader
+      eyebrow="Beyond Research"
+      title="Photography"
+      subtitle="Selected frames from travel, nature, and city life."
+    />
+    <PhotoGrid photos={featuredPhotos} />
+    <div class="reveal mt-8 text-center">
+      <a
+        href="/photography/"
+        class="text-sm font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+      >
+        Browse the gallery <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- News / highlights -->
+  <section class="bg-slate-50 dark:bg-ink-900/30" aria-labelledby="news-heading">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <SectionHeader eyebrow="Updates" title="News & highlights" />
+      <ol class="reveal relative space-y-6 border-l-2 border-slate-200 pl-6 dark:border-ink-800">
+        {
+          news.map((item) => (
+            <li class="relative">
+              <span
+                class="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-accent-500 dark:border-ink-950"
+                aria-hidden="true"
+              />
+              <time
+                datetime={item.data.date.toISOString().slice(0, 10)}
+                class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500"
+              >
+                {formatNewsDate(item.data.date)}
+              </time>
+              <h3 class="mt-0.5 font-semibold text-slate-900 dark:text-white">
+                {item.data.link ? (
+                  <a
+                    href={item.data.link}
+                    class="hover:text-brand-600 dark:hover:text-brand-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.data.title}
+                  </a>
+                ) : (
+                  item.data.title
+                )}
+              </h3>
+              {item.data.description && (
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{item.data.description}</p>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="contact-heading">
+    <SectionHeader
+      eyebrow="Get in Touch"
+      title="Contact"
+      subtitle="Open to collaborations, research discussions, and opportunities."
+    />
+    <ContactCard />
+  </section>
+</BaseLayout>

@@ -1,0 +1,141 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, technologies, researchArea, role, impact, links, coverImage, gallery } =
+  project.data;
+
+const externalLinks = [
+  links.github ? { label: 'GitHub', href: links.github } : null,
+  links.demo ? { label: 'Live Demo', href: links.demo } : null,
+  links.paper ? { label: 'Paper', href: links.paper } : null,
+  links.slides ? { label: 'Slides', href: links.slides } : null,
+].filter((l) => l !== null);
+---
+
+<BaseLayout title={title} description={summary} image={coverImage} type="article">
+  <article class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <nav aria-label="Breadcrumb" class="mb-8 text-sm">
+      <a
+        href="/projects/"
+        class="font-medium text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400"
+      >
+        ← All projects
+      </a>
+    </nav>
+
+    {
+      researchArea && (
+        <p class="mb-2 text-sm font-bold uppercase tracking-widest text-accent-500">
+          {researchArea}
+        </p>
+      )
+    }
+    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+      {title}
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">{summary}</p>
+
+    {
+      externalLinks.length > 0 && (
+        <div class="mt-6 flex flex-wrap gap-3">
+          {externalLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 dark:border-ink-700 dark:text-slate-300 dark:hover:border-brand-600 dark:hover:text-brand-400"
+            >
+              {link.label} ↗
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      coverImage && (
+        <img
+          src={coverImage}
+          alt={`Cover image for ${title}`}
+          class="mt-10 w-full rounded-2xl border border-slate-200 shadow-lg dark:border-ink-800"
+          loading="eager"
+          decoding="async"
+        />
+      )
+    }
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      {
+        role && (
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-ink-800 dark:bg-ink-900/60">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Role
+            </p>
+            <p class="mt-1 text-sm font-medium text-slate-900 dark:text-white">{role}</p>
+          </div>
+        )
+      }
+      {
+        impact && (
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:col-span-2 dark:border-ink-800 dark:bg-ink-900/60">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Impact / Results
+            </p>
+            <p class="mt-1 text-sm font-medium text-slate-900 dark:text-white">{impact}</p>
+          </div>
+        )
+      }
+    </div>
+
+    {
+      technologies.length > 0 && (
+        <div class="mt-6">
+          <h2 class="mb-3 text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            Technologies
+          </h2>
+          <ul class="flex flex-wrap gap-2">
+            {technologies.map((tech) => (
+              <li class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 dark:bg-ink-800 dark:text-slate-300">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div class="prose-body mt-12 leading-relaxed text-slate-600 dark:text-slate-400">
+      <Content />
+    </div>
+
+    {
+      gallery.length > 0 && (
+        <section class="mt-14" aria-label="Project gallery">
+          <h2 class="mb-5 text-2xl font-bold text-slate-900 dark:text-white">Gallery</h2>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {gallery.map((image) => (
+              <img
+                src={image}
+                alt={`Screenshot from ${title}`}
+                loading="lazy"
+                decoding="async"
+                class="w-full rounded-2xl border border-slate-200 shadow-sm dark:border-ink-800"
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>

@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import profile from '../data/profile.json';
+
+const education = [
+  {
+    school: 'University of Victoria',
+    location: 'Victoria, BC, Canada',
+    degree: 'Ph.D. Candidate in Electrical and Computer Engineering',
+    period: '2021 – Present',
+    details: 'GPA: 9.0 / 9.0 · Supervisor: Dr. Lin Cai',
+    thesis:
+      'AI-Driven Multipath Scheduling in Heterogeneous Mobile Networks: Meta-Learning, Federated Optimization, and On-Device Intent-Aware Control',
+  },
+  {
+    school: 'Isfahan University of Technology',
+    location: 'Isfahan, Iran',
+    degree: 'M.Sc. in Communication Networks',
+    period: '2016 – 2019',
+    details: 'GPA: 3.90 / 4.0 · Ranked 1st among Communication Networks M.Sc. students',
+    thesis: 'Controller Placement in Software-Defined Networks using Dominating Set',
+  },
+];
+
+const experience = [
+  {
+    org: 'Ericsson – Global AI Accelerator (GAIA)',
+    location: 'Montreal, Canada',
+    role: 'Machine Learning Engineer Intern',
+    period: 'Jan 2025 – Dec 2025',
+    bullets: [
+      'Spearheaded end-to-end development of GenAI and predictive modeling solutions for 5G/6G networks across three flagship projects.',
+      'Built an enterprise RAG-based search engine (LangChain, Weaviate, cross-encoder reranking) that lets engineers pinpoint solutions across millions of JIRA tickets in seconds, with a DeepEval evaluation pipeline benchmarking hallucination rates before production.',
+      'Developed intent-based network automation: LLMs translating natural-language intents into executable network policies, plus KPI forecasting (AutoReg, LightGBM, ARIMA) and a real-time InfluxDB + Grafana telemetry pipeline for proactive SLA management.',
+      'Co-built a centralized "AI Hub" benchmarking platform with Université de Montréal, accelerating model selection and research-to-production handoff.',
+      'Shipped AI backend services with Docker, Kubeflow, and GitLab CI/CD.',
+    ],
+  },
+  {
+    org: 'University of Victoria',
+    location: 'Victoria, BC, Canada',
+    role: 'Research Assistant & Teaching Assistant',
+    period: '2021 – Present',
+    bullets: [
+      'Doctoral research on AI-driven multipath scheduling in heterogeneous mobile networks: meta-reinforcement learning (LiveStream Meta-DAMS), federated optimization (Fed-MVP), and on-device intent-aware control (KESTREL) — published in top IEEE/ACM venues.',
+      'Teaching Assistant for 8 courses across systems, networking, and software engineering — including Real-Time Computer Systems Design (ECE 455), Computer Networks (CSC 361), Computer Architecture (ECE 255), and Design Project II (SENG 499).',
+    ],
+  },
+];
+
+const awards = [
+  'Elected ECE Graduate Student Representative & GSS Financial Committee Member, University of Victoria, 2021',
+  'Ranked 1st among Communication Networks M.Sc. students, Isfahan University of Technology, 2019',
+  'Ranked 5th among B.Sc. Communication Engineering students, Yazd University, 2014',
+];
+
+const certifications = [
+  'NVIDIA GenAI & DRL for Anomaly Detection',
+  'Deep Learning Specialization',
+  'CCNA (IEEE)',
+  'Firewalls & Intrusion Prevention Systems',
+  'Google Cybersecurity Professional Certificate (in progress)',
+];
+---
+
+<BaseLayout
+  title="About"
+  description={`About ${profile.name} — ${profile.title} at ${profile.affiliation}.`}
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <SectionHeader eyebrow="About" title="About me" />
+
+    <div class="reveal grid items-start gap-10 md:grid-cols-[auto_1fr]">
+      <img
+        src={profile.headshot}
+        alt={`Portrait of ${profile.name}`}
+        width="208"
+        height="208"
+        class="mx-auto h-52 w-52 rounded-3xl border border-slate-200 object-cover shadow-lg dark:border-ink-700"
+      />
+      <div>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">{profile.name}</h3>
+        <p class="mt-1 font-medium text-brand-600 dark:text-brand-400">
+          {profile.title} · {profile.affiliation}
+        </p>
+        <p class="mt-5 leading-relaxed text-slate-600 dark:text-slate-400">
+          {profile.bioShort}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          {
+            profile.cv ? (
+              <a
+                href={profile.cv}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:-translate-y-0.5 hover:bg-brand-500"
+              >
+                Download CV (PDF)
+              </a>
+            ) : (
+              <span class="rounded-xl border border-dashed border-slate-300 px-5 py-3 text-sm text-slate-400 dark:border-ink-700 dark:text-slate-500">
+                CV coming soon — upload via /admin
+              </span>
+            )
+          }
+          <a
+            href="/contact/"
+            class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 dark:border-ink-700 dark:text-slate-300 dark:hover:border-brand-600 dark:hover:text-brand-400"
+          >
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="reveal mt-16">
+      <h3 class="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Education</h3>
+      <div class="space-y-5">
+        {
+          education.map((edu) => (
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900/60">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">{edu.school}</h4>
+                <span class="text-sm font-medium text-slate-400 dark:text-slate-500">
+                  {edu.period}
+                </span>
+              </div>
+              <p class="mt-1 font-medium text-brand-600 dark:text-brand-400">{edu.degree}</p>
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                {edu.location} · {edu.details}
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <span class="font-semibold text-slate-900 dark:text-white">Thesis:</span>{' '}
+                {edu.thesis}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="reveal mt-16">
+      <h3 class="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Experience</h3>
+      <div class="space-y-5">
+        {
+          experience.map((exp) => (
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900/60">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">{exp.org}</h4>
+                <span class="text-sm font-medium text-slate-400 dark:text-slate-500">
+                  {exp.period}
+                </span>
+              </div>
+              <p class="mt-1 font-medium text-brand-600 dark:text-brand-400">
+                {exp.role} · {exp.location}
+              </p>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                {exp.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Awards & certifications -->
+    <div class="reveal mt-16 grid gap-10 md:grid-cols-2">
+      <div>
+        <h3 class="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Honors & Awards</h3>
+        <ul class="space-y-3">
+          {
+            awards.map((award) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <span class="mt-0.5 text-accent-500" aria-hidden="true">
+                  ★
+                </span>
+                {award}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Certifications</h3>
+        <ul class="space-y-3">
+          {
+            certifications.map((cert) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                <span class="mt-0.5 text-brand-500" aria-hidden="true">
+                  ✓
+                </span>
+                {cert}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Focus areas -->
+    <div class="reveal mt-16">
+      <h3 class="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Focus areas</h3>
+      <ul class="flex flex-wrap gap-2">
+        {
+          profile.badges.map((badge) => (
+            <li class="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-medium text-slate-700 dark:border-ink-700 dark:bg-ink-900 dark:text-slate-300">
+              {badge}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
