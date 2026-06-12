@@ -13,7 +13,7 @@
 backend:
   name: github
   repo: sepamir1992/sepamir1992.github.io
-  branch: master
+  branch: main
   # TODO: after deploying an OAuth proxy (see README), set its URL here:
   # base_url: https://your-oauth-proxy.example.workers.dev
 
