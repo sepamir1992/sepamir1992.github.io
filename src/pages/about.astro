@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import profile from '../data/profile.json';
-import games from '../data/games.json';
 
 const education = [
   {
@@ -220,26 +219,5 @@ const certifications = [
       </ul>
     </div>
 
-    <!-- Favorite video games -->
-    <div class="reveal mt-16">
-      <h3 class="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Favorite video games</h3>
-      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {
-          games.map((game) => (
-            <li class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg dark:border-ink-800 dark:bg-ink-900/60 dark:hover:border-brand-700">
-              <img
-                src={game.image}
-                alt={`${game.name} cover art`}
-                loading="lazy"
-                class="aspect-[460/215] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <p class="px-3 py-2.5 text-sm font-semibold text-slate-900 dark:text-white">
-                {game.name}
-              </p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import games from '../data/games.json';
+---
+
+<BaseLayout
+  title="Video Games"
+  description="Favorite video games — the worlds I keep coming back to, from Dota 2 to Red Dead Redemption 2."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <SectionHeader
+      eyebrow="Beyond Research"
+      title="Video games"
+      subtitle="The worlds I keep coming back to — in no particular order, because ranking them would start arguments I can't win."
+    />
+
+    <ul class="reveal grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+      {
+        games.map((game) => (
+          <li class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg dark:border-ink-800 dark:bg-ink-900/60 dark:hover:border-brand-700">
+            <img
+              src={game.image}
+              alt={`${game.name} cover art`}
+              loading="lazy"
+              class="aspect-[460/215] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <p class="px-3 py-2.5 text-sm font-semibold text-slate-900 dark:text-white">
+              {game.name}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

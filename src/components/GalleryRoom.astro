@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import profile from '../data/profile.json';
 
 interface Props {
   photos: CollectionEntry<'photos'>[];
@@ -57,8 +58,11 @@ const plaqueLine = (photo: CollectionEntry<'photos'>) =>
       }
 
       <!-- Exit panel -->
-      <div class="gallery-intro flex shrink-0 flex-col justify-center px-10 text-center sm:px-14" aria-hidden="true">
-        <p class="gallery-intro-hint text-sm leading-relaxed">Thanks for visiting</p>
+      <div class="gallery-intro flex shrink-0 flex-col justify-center px-10 text-center sm:px-14">
+        <p class="gallery-intro-title text-lg font-bold">Thanks for visiting</p>
+        <p class="gallery-intro-hint mx-auto mt-3 max-w-[14rem] text-sm leading-relaxed">
+          All works in this gallery © {profile.name}. Shot on location — no stock, no AI, just patience and good light.
+        </p>
       </div>
     </div>
   </div>
@@ -110,6 +114,7 @@ const plaqueLine = (photo: CollectionEntry<'photos'>) =>
       <p id="gallery-lightbox-title" class="font-semibold text-white"></p>
       <p id="gallery-lightbox-line" class="mt-0.5 text-sm text-ink-200"></p>
       <p id="gallery-lightbox-caption" class="mt-1 text-xs text-ink-300"></p>
+      <p class="mt-2 text-[0.65rem] uppercase tracking-widest text-ink-400">© {profile.name} · All rights reserved</p>
     </figcaption>
   </figure>
 </div>
