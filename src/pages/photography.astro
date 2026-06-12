@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import PhotoGrid from '../components/PhotoGrid.astro';
+import GalleryRoom from '../components/GalleryRoom.astro';
 
 const photos = (await getCollection('photos')).sort((a, b) => {
   const aTime = a.data.date?.valueOf() ?? 0;
@@ -21,7 +21,7 @@ const categories = [...new Set(photos.map((p) => p.data.category))];
     <SectionHeader
       eyebrow="Beyond Research"
       title="Photography"
-      subtitle="Selected frames from travel, nature, city life, and research events."
+      subtitle="Step into the gallery — scroll through the room and click any frame for a closer look."
     />
 
     {
@@ -49,18 +49,13 @@ const categories = [...new Set(photos.map((p) => p.data.category))];
       )
     }
 
-    <div id="photo-collection">
-      <PhotoGrid photos={photos} />
+    <div class="reveal">
+      <GalleryRoom photos={photos} />
     </div>
   </section>
 
-  <script is:inline define:vars={{ categoriesByIndex: photos.map((p) => p.data.category) }}>
-    // Tag each rendered figure with its category, then wire up the filter buttons.
-    const figures = document.querySelectorAll('#photo-collection figure');
-    figures.forEach((fig, i) => {
-      fig.dataset.category = categoriesByIndex[i];
-    });
-
+  <script is:inline>
+    const figures = document.querySelectorAll('.gallery-piece');
     const buttons = document.querySelectorAll('.photo-filter');
     const activeClasses = ['bg-brand-600', 'text-white'];
     const inactiveClasses = [
@@ -86,6 +81,7 @@ const categories = [...new Set(photos.map((p) => p.data.category))];
         figures.forEach((fig) => {
           fig.style.display = filter === 'all' || fig.dataset.category === filter ? '' : 'none';
         });
+        document.getElementById('gallery-scroll')?.scrollTo({ left: 0, behavior: 'smooth' });
       });
     });
   </script>
