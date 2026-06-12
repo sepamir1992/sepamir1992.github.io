@@ -10,11 +10,15 @@ featured: false
 order: 10
 ---
 
-## Overview
+## Goal
 
-Deployed campus network infrastructure (Cisco routers, MikroTik APs, Raspberry Pi sensors) with virtualization at Isfahan University of Technology, and implemented an SDN testbed with Mininet and the Floodlight controller.
+Legacy campus networking was costly to operate, slow to reconfigure, and difficult to scale.
 
-## Results
+## My Solution
 
-- **99.9% uptime** and **30% hardware cost reduction** for the campus deployment
-- **60% increase in network scalability** and **48% reduction in configuration time** via the SDN testbed
+Deployed virtualized campus infrastructure (Cisco routers, MikroTik APs, Raspberry Pi sensors) and an SDN testbed using Mininet with a Floodlight controller at Isfahan University of Technology.
+
+## Impact
+
+- Sustained **99.9% uptime** with a **30% hardware-cost reduction**
+- Improved network scalability by **60%** and cut configuration time by **48%**

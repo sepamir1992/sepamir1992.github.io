@@ -4,28 +4,34 @@ summary: End-to-end GenAI and predictive modeling systems built as a Machine Lea
 technologies: [Python, LangChain, Weaviate, Amazon Bedrock, DeepEval, Docker, Kubeflow, GitLab CI/CD, InfluxDB, Grafana, LightGBM]
 researchArea: LLM & RAG Systems
 role: "Machine Learning Engineer Intern (Jan – Dec 2025), Montreal, Canada"
-impact: "Enabled engineers to pinpoint solutions across millions of JIRA tickets in seconds; automated network lifecycle management, eliminating hours of manual configuration per deployment cycle; delivered proactive SLA management through KPI forecasting."
+impact: "Cut solution discovery from hours to seconds; eliminated hours of manual configuration per deployment cycle; accelerated AI model selection across GAIA teams."
 links: {}
 featured: true
 order: 6
 ---
 
-## Overview
+As a Machine Learning Engineer Intern at **Ericsson's Global AI Accelerator (GAIA)** in Montreal, I led end-to-end development of GenAI and predictive modeling solutions for 5G/6G networks across three flagship projects.
 
-As a Machine Learning Engineer Intern at **Ericsson's Global AI Accelerator (GAIA)** in Montreal, I spearheaded end-to-end development of GenAI and predictive modeling solutions for 5G/6G networks across three flagship projects.
+## Enterprise RAG-Based Search Engine
 
-## 1. Enterprise RAG-based Search Engine
+**Goal** — Engineers lost hours searching millions of JIRA tickets and fragmented documentation for known fixes.
 
-- Architected a **hybrid search system** with LangChain and Weaviate, combining keyword and semantic retrieval with cross-encoder reranking — enabling engineers to pinpoint solutions across millions of JIRA tickets and heterogeneous documentation repositories in seconds.
-- Built a rigorous evaluation pipeline using **DeepEval**; curated a ground-truth dataset from engineer reviews to benchmark hallucination rates and retrieval accuracy prior to production rollout.
-- Containerized services with **Docker**, orchestrated ML workflows via **Kubeflow**, and implemented **GitLab CI/CD** pipelines for automated testing and continuous deployment.
+**My Solution** — Architected a hybrid search system (LangChain + Weaviate) combining keyword and semantic retrieval with cross-encoder reranking; containerized with Docker, orchestrated via Kubeflow, and deployed through GitLab CI/CD.
 
-## 2. Intent-Based Network Automation (Mission-Critical Networks)
+**Impact** — Cut solution discovery from hours to seconds; a DeepEval pipeline with an engineer-curated ground-truth set benchmarked hallucination and retrieval accuracy before production rollout.
 
-- Integrated **LLMs to translate natural-language intents into executable network policies**, automating lifecycle management for RAN/Core functions and eliminating hours of manual configuration per deployment cycle.
-- Developed time-series forecasting models (AutoReg, LightGBM, ARIMA) for critical KPIs (throughput, latency) and user mobility metrics, enabling **proactive SLA management** before degradation occurs.
-- Deployed a real-time telemetry pipeline with **InfluxDB** and **Grafana**, exposing prediction APIs that empowered network operators to preemptively reroute resources in high-mobility scenarios.
+## Intent-Based Network Automation (Mission-Critical Networks)
 
-## 3. Centralized AI Platform ("AI Hub")
+**Goal** — Manual RAN/Core configuration consumed hours per deployment cycle and reacted to SLA violations only after degradation.
 
-- Collaborated with **Université de Montréal** to build a centralized dashboard for benchmarking telecom AI models across teams, replacing fragmented evaluation workflows with a single-pane-of-glass interface that accelerated model selection and reduced research-to-production handoff time.
+**My Solution** — Integrated LLMs to translate natural-language intents into executable network policies, and built time-series forecasting models (AutoReg, LightGBM, ARIMA) for throughput, latency, and user-mobility KPIs, served through a real-time InfluxDB + Grafana telemetry pipeline.
+
+**Impact** — Eliminated hours of manual configuration per deployment and exposed prediction APIs that let operators preemptively reroute resources in high-mobility scenarios.
+
+## Centralized AI Platform ("AI Hub")
+
+**Goal** — Fragmented, team-by-team evaluation workflows slowed telecom AI model selection and research-to-production handoff.
+
+**My Solution** — Collaborated with Université de Montréal to build a centralized single-pane-of-glass dashboard for benchmarking AI models across teams.
+
+**Impact** — Accelerated model selection and measurably reduced research-to-production handoff time across GAIA teams.

@@ -12,16 +12,15 @@ featured: false
 order: 3
 ---
 
-## Overview
+## Goal
 
-Meta-DAMS (Delay-Aware Multipath Scheduler using hybrid Meta reinforcement learning) is the foundation of my multipath scheduling line of work. It frames multipath packet scheduling as a sequential decision problem and uses meta-reinforcement learning to produce schedulers that generalize across path asymmetry, loss patterns, and bandwidth fluctuations.
+Hand-tuned multipath schedulers (minRTT, round-robin) cannot cope with path asymmetry, loss patterns, and bandwidth fluctuations — and a single learned policy fails when deployed in network conditions it never saw during training.
 
-## Key ideas
+## My Solution
 
-- RL formulation of per-packet path selection for video streaming
-- Meta-learning for robustness to unseen path conditions
-- Delay-awareness as a first-class scheduling signal
+Framed multipath packet scheduling as a sequential decision problem and built a **delay-aware scheduler using hybrid meta reinforcement learning**, producing scheduling policies that generalize across heterogeneous and time-varying network paths. This work is the foundation of my multipath scheduling research line.
 
-## Publication
+## Impact
 
-Published at **IEEE Vehicular Technology Conference (VTC2023-Fall)**, Hong Kong, 2023: *A. Sepahi, L. Cai, W. Yang, and J. Pan, "Meta-DAMS: Delay-Aware Multipath Scheduler using Hybrid Meta Reinforcement Learning," pp. 1–5.*
+- Robust per-packet path selection under unseen path conditions
+- Published at **IEEE Vehicular Technology Conference (VTC2023-Fall)**, Hong Kong, 2023: *A. Sepahi, L. Cai, W. Yang, and J. Pan, "Meta-DAMS: Delay-Aware Multipath Scheduler using Hybrid Meta Reinforcement Learning," pp. 1–5.*

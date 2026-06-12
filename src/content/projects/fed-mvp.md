@@ -1,10 +1,10 @@
 ---
 title: "Fed-MVP: Federated Multipath Video Streaming"
-summary: A federated learning-based multipath video streaming system with distributed meta-models at edge servers, achieving a 35% reduction in stalling and 20% better video quality. Accepted to IEEE/ACM Transactions on Networking.
+summary: A federated learning-based multipath video streaming system with distributed meta-models at edge servers, achieving a 35% reduction in stalling and 20% better video quality. Published in IEEE/ACM Transactions on Networking.
 technologies: [Python, PyTorch, Federated Learning, Meta-Learning, MPQUIC, Edge Computing]
 researchArea: Federated Learning
 role: Lead researcher and developer
-impact: "35% reduction in video stalling and 20% improvement in average video quality over baseline approaches. Accepted to IEEE/ACM Transactions on Networking. Supported by the Department of National Defence (DND), Canada."
+impact: "35% reduction in video stalling and 20% improvement in average video quality over baselines. Published in IEEE/ACM Transactions on Networking. Funded by the Department of National Defence (DND), Canada."
 links:
   github: ""
   paper: ""
@@ -12,22 +12,16 @@ featured: true
 order: 1
 ---
 
-## Overview
+## Goal
 
-Fed-MVP (Federated Multipath Video streaming Protocol) tackles a core tension in learning-based multipath video streaming: schedulers trained on one client's network conditions generalize poorly to others, but pooling raw traces in a central server raises privacy and bandwidth concerns.
+Adapt multipath video streaming to heterogeneous, fast-changing network conditions without centralizing sensitive client data. Schedulers trained on one client's network conditions generalize poorly to others, but pooling raw traces in a central server raises privacy and bandwidth concerns.
 
-Fed-MVP resolves this with **federated learning over distributed meta-models at edge servers**: each multi-homed client trains a local scheduling policy on its own paths (e.g., Wi-Fi + cellular), and only model updates — never raw network traces — are aggregated, enabling dynamic adaptation to varying network conditions.
+## My Solution
 
-## Key ideas
+Built a hierarchical federated learning protocol with **distributed meta-models at edge servers**, enabling clients to personalize schedulers locally while sharing only model updates — never raw network traces.
 
-- Federated aggregation of scheduling policies across heterogeneous clients
-- Distributed meta-models at edge servers for fast adaptation
-- Multipath packet scheduling tuned for video QoE (quality, stalls, latency)
-- Privacy preservation: raw per-client network data never leaves the device
+## Impact
 
-## Results
-
-- **35% reduction in video stalling** over baseline approaches
-- **20% improvement in average video quality**
-- Accepted to **IEEE/ACM Transactions on Networking**
-- Research supported by the **Department of National Defence (DND), Canada**
+- Reduced video stalling by **35%** and improved average video quality by **20%** over baselines
+- **Published in IEEE/ACM Transactions on Networking**
+- Research funded by the **Department of National Defence (DND), Canada**

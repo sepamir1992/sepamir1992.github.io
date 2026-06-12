@@ -1,5 +1,5 @@
 ---
-title: "New project: satellite gateway with MPQUIC transport"
+title: "New project: SpaceGate — intelligent gateway for Hybrid Space Networks"
 date: 2026-06-01
-description: "Started a new research project designing a gateway for satellite networks that improves routing and smooths transmission using MPQUIC at the transport layer."
+description: "Started SpaceGate, a TRL-4 project building an intelligent gateway for dynamic LEO-style Hybrid Space Networks with adaptive path selection and MPQUIC-like traffic steering."
 ---

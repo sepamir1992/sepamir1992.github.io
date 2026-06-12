@@ -4,17 +4,21 @@ summary: A full-duplex algorithm for WARP software-defined radio nodes, built by
 technologies: [C, 802.11 MAC, Software-Defined Radio, WARP]
 researchArea: Wireless Networks
 role: "Researcher — TÜBİTAK project, Sabancı University, Istanbul (Oct 2020 – Aug 2021)"
-impact: "45% throughput increase and 37% latency reduction."
+impact: "45% throughput increase and 37% latency reduction over the half-duplex baseline."
 links: {}
 featured: false
 order: 9
 ---
 
-## Overview
+## Goal
 
-Developed a full-duplex algorithm for WARP (Wireless Open-Access Research Platform) nodes by modifying the MAC-layer C code in the 802.11 reference design, as part of a TÜBİTAK-funded project at Sabancı University.
+Half-duplex operation in the 802.11 reference design left substantial wireless capacity unused on WARP (Wireless Open-Access Research Platform) hardware.
 
-## Results
+## My Solution
 
-- **45% throughput increase**
+Developed a full-duplex algorithm by modifying MAC-layer C code in the 802.11 reference design for WARP nodes, as part of a TÜBİTAK-funded project at Sabancı University.
+
+## Impact
+
+- **45% throughput increase** over the half-duplex baseline
 - **37% latency reduction**

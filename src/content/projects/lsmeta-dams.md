@@ -1,6 +1,6 @@
 ---
-title: "LiveStream Meta-DAMS: Meta-RL Scheduling for Live Video"
-summary: A hybrid meta-reinforcement learning multipath scheduler that adapts within seconds to unseen network conditions for live video streaming. Published in IEEE Transactions on Cognitive Communications and Networking.
+title: "LSMeta-DAMS: Meta-RL Delay-Aware Multipath Scheduler"
+summary: A hybrid meta-reinforcement learning multipath scheduler that learns an adaptation prior across network environments and fine-tunes to unseen conditions within a few gradient steps. Published in IEEE TCCN.
 technologies: [Python, PyTorch, Meta-RL, MPQUIC, Live Streaming]
 researchArea: Multipath Video Streaming
 role: Lead researcher and developer
@@ -12,16 +12,15 @@ featured: true
 order: 2
 ---
 
-## Overview
+## Goal
 
-Live video streaming is unforgiving: there is no buffer cushion to hide bad scheduling decisions, and network conditions shift constantly. LiveStream Meta-DAMS applies **hybrid meta-reinforcement learning** so the scheduler does not just learn one policy — it learns how to adapt its policy quickly when it encounters network conditions it has never seen.
+Overcome the slow convergence of RL-based schedulers, which fail when network conditions shift faster than models can retrain. Live video streaming is especially unforgiving: there is no buffer cushion to hide bad scheduling decisions.
 
-## Key ideas
+## My Solution
 
-- Meta-training across diverse network environments for fast adaptation
-- Hybrid design combining learned policies with delay-aware heuristics for live latency budgets
-- Extends the Meta-DAMS scheduler lineage to live-streaming constraints
+Developed a **hybrid meta-reinforcement learning scheduler** that learns an adaptation prior across network environments, fine-tuning to unseen conditions within a few gradient steps — combining learned policies with delay-aware heuristics for live latency budgets.
 
-## Publication
+## Impact
 
-Published in **IEEE Transactions on Cognitive Communications and Networking** (2024): *A. Sepahi, L. Cai, W. Yang, and J. Pan, "LiveStream Meta-DAMS: Multipath Scheduler using Hybrid Meta Reinforcement Learning for Live Video Streaming."*
+- Delivered fast, delay-aware adaptation for live video streaming over MPQUIC
+- Published in **IEEE Transactions on Cognitive Communications and Networking** (2024): *A. Sepahi, L. Cai, W. Yang, and J. Pan, "LiveStream Meta-DAMS: Multipath Scheduler using Hybrid Meta Reinforcement Learning for Live Video Streaming."*

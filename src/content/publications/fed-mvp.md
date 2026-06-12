@@ -3,7 +3,7 @@ title: "Fed-MVP: Multipath Video Streaming Protocol using Federated Learning"
 authors: "A. Sepahi, L. Cai, W. Yang, and P.S. Eftetahi"
 venue: "IEEE/ACM Transactions on Networking"
 year: 2026
-status: accepted
+status: published
 doi: ""
 arxiv: ""
 pdf: ""

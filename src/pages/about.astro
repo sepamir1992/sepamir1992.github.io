@@ -9,7 +9,7 @@ const education = [
     location: 'Victoria, BC, Canada',
     degree: 'Ph.D. Candidate in Electrical and Computer Engineering',
     period: '2021 – Present',
-    details: 'GPA: 9.0 / 9.0 · Supervisor: Dr. Lin Cai',
+    details: 'GPA: 9.0 / 9.0 · Supervisor: Dr. Lin Cai (IEEE Fellow)',
     thesis:
       'AI-Driven Multipath Scheduling in Heterogeneous Mobile Networks: Meta-Learning, Federated Optimization, and On-Device Intent-Aware Control',
   },
@@ -100,9 +100,12 @@ const certifications = [
                 Download CV (PDF)
               </a>
             ) : (
-              <span class="rounded-xl border border-dashed border-slate-300 px-5 py-3 text-sm text-slate-400 dark:border-ink-700 dark:text-slate-500">
-                CV coming soon — upload via /admin
-              </span>
+              <a
+                href="/cv/"
+                class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:-translate-y-0.5 hover:bg-brand-500"
+              >
+                View CV
+              </a>
             )
           }
           <a
