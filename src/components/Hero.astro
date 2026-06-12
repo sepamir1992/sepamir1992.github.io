@@ -1,12 +1,5 @@
 ---
 import profile from '../data/profile.json';
-
-const ctas = [
-  { href: '/projects/', label: 'View Projects', style: 'primary' },
-  { href: '/publications/', label: 'Publications', style: 'secondary' },
-  { href: '/photography/', label: 'Photography', style: 'secondary' },
-  { href: '/contact/', label: 'Contact', style: 'ghost' },
-];
 ---
 
 <section class="relative overflow-hidden bg-ink-950 text-white">
@@ -44,25 +37,6 @@ const ctas = [
           }
         </ul>
 
-        <div class="mt-10 flex flex-wrap gap-3">
-          {
-            ctas.map((cta) => (
-              <a
-                href={cta.href}
-                class:list={[
-                  'rounded-xl px-5 py-3 text-sm font-semibold transition-all',
-                  cta.style === 'primary' &&
-                    'bg-brand-600 text-white shadow-lg shadow-brand-600/30 hover:-translate-y-0.5 hover:bg-brand-500',
-                  cta.style === 'secondary' &&
-                    'border border-ink-600 bg-ink-900/60 text-white hover:-translate-y-0.5 hover:border-brand-500 hover:bg-ink-800',
-                  cta.style === 'ghost' && 'px-4 text-ink-200 hover:text-white',
-                ]}
-              >
-                {cta.label}
-              </a>
-            ))
-          }
-        </div>
       </div>
 
       <div class="hidden justify-self-center lg:block">

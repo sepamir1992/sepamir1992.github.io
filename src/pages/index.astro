@@ -7,7 +7,6 @@ import ProjectCard from '../components/ProjectCard.astro';
 import PublicationCard from '../components/PublicationCard.astro';
 import ResearchAreaCard from '../components/ResearchAreaCard.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
-import ContactCard from '../components/ContactCard.astro';
 import profile from '../data/profile.json';
 
 const research = (await getCollection('research')).sort(
@@ -191,13 +190,4 @@ const formatNewsDate = (date: Date) =>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6" aria-labelledby="contact-heading">
-    <SectionHeader
-      eyebrow="Get in Touch"
-      title="Contact"
-      subtitle="Open to collaborations, research discussions, and opportunities."
-    />
-    <ContactCard />
-  </section>
 </BaseLayout>
