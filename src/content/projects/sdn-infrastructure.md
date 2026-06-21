@@ -1,9 +1,9 @@
 ---
 title: "SDN Infrastructure & Campus Network Deployment"
-summary: Deployed virtualized campus network infrastructure and an SDN testbed with Mininet and Floodlight — achieving 99.9% uptime, 30% hardware cost reduction, and 60% better scalability.
+summary: Deployed virtualized campus network infrastructure and an SDN testbed with Mininet and Floodlight, achieving 99.9% uptime, 30% hardware cost reduction, and 60% better scalability.
 technologies: [SDN, Mininet, Floodlight, Cisco, MikroTik, Raspberry Pi]
 researchArea: Network Automation
-role: "Network engineer — Isfahan University of Technology (Summer 2018)"
+role: "Network engineer · Isfahan University of Technology (Summer 2018)"
 impact: "99.9% uptime, 30% hardware cost reduction, 60% scalability increase, 48% faster configuration."
 links: {}
 featured: false

@@ -18,7 +18,7 @@ Overcome the slow convergence of RL-based schedulers, which fail when network co
 
 ## My Solution
 
-Developed a **hybrid meta-reinforcement learning scheduler** that learns an adaptation prior across network environments, fine-tuning to unseen conditions within a few gradient steps — combining learned policies with delay-aware heuristics for live latency budgets.
+Developed a **hybrid meta-reinforcement learning scheduler** that learns an adaptation prior across network environments, fine-tuning to unseen conditions within a few gradient steps, combining learned policies with delay-aware heuristics for live latency budgets.
 
 ## Impact
 

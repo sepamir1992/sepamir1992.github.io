@@ -5,4 +5,4 @@ icon: chat
 order: 6
 ---
 
-Large language models become far more useful when grounded in the right knowledge. I build retrieval-augmented generation pipelines — hybrid search, dense retrieval, reranking, and evaluation — for enterprise search and network automation use cases.
+Large language models become far more useful when grounded in the right knowledge. I build retrieval-augmented generation pipelines (hybrid search, dense retrieval, reranking, and evaluation) for enterprise search and network automation use cases.

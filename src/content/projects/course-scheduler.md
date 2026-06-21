@@ -1,6 +1,6 @@
 ---
 title: "Course Scheduler for Canadian Universities"
-summary: Led a multi-team effort to build course scheduling software balancing student preferences, faculty availability, and classroom resources — reducing scheduling conflicts by 70%.
+summary: Led a multi-team effort to build course scheduling software balancing student preferences, faculty availability, and classroom resources, reducing scheduling conflicts by 70%.
 technologies: [Python, Algorithms, Databases, Project Management]
 researchArea: Software Engineering
 role: "Project Manager, University of Victoria (May – Aug 2023)"

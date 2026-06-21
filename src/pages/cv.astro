@@ -13,7 +13,7 @@ const education = [
   {
     school: 'University of Victoria',
     location: 'Victoria, BC, Canada',
-    degree: 'Ph.D. Candidate in Electrical and Computer Engineering — GPA: 9.0 / 9.0',
+    degree: 'Ph.D. Candidate in Electrical and Computer Engineering · GPA: 9.0 / 9.0',
     period: '2021 – Present',
     details:
       'Supervisor: Dr. Lin Cai (IEEE Fellow) · Focus: AI/ML, Wireless Communications, Internet Protocols, Network Security',
@@ -23,7 +23,7 @@ const education = [
   {
     school: 'Isfahan University of Technology',
     location: 'Isfahan, Iran',
-    degree: 'M.Sc. in Communication Networks — GPA: 3.90 / 4.0',
+    degree: 'M.Sc. in Communication Networks · GPA: 3.90 / 4.0',
     period: '2016 – 2019',
     details: 'Ranked 1st among Communication Networks M.Sc. students',
     thesis: 'Controller Placement in Software-Defined Networks using Dominating Set',
@@ -40,7 +40,7 @@ interface GsiItem {
 
 const doctoralResearch: GsiItem[] = [
   {
-    title: 'KESTREL — On-Device Intent-Aware Multipath Scheduling',
+    title: 'KESTREL: On-Device Intent-Aware Multipath Scheduling',
     goal: 'Bring intelligent MPQUIC scheduling onto resource-constrained mobile devices, where cloud-scale RL models are infeasible and application intent (latency vs. throughput vs. energy) is ignored by existing schedulers.',
     solution:
       'Architected a split-loop design separating a lightweight on-device fast path from a slower learning loop, with intent-aware policies trained on oracle-labeled traces from a custom Android data-collection pipeline.',
@@ -48,7 +48,7 @@ const doctoralResearch: GsiItem[] = [
       'Enables real-time, intent-aligned path selection fully on-device; manuscript in preparation for IEEE Transactions on Mobile Computing, with a live Android deployment strengthening the systems contribution.',
   },
   {
-    title: 'Fed-MVP — Federated Multipath Video Streaming',
+    title: 'Fed-MVP: Federated Multipath Video Streaming',
     note: 'funded by DND Canada',
     goal: 'Adapt multipath video streaming to heterogeneous, fast-changing network conditions without centralizing sensitive client data.',
     solution:
@@ -57,7 +57,7 @@ const doctoralResearch: GsiItem[] = [
       'Reduced video stalling by 35% and improved average video quality by 20% over baselines; published in IEEE/ACM Transactions on Networking.',
   },
   {
-    title: 'LSMeta-DAMS — Meta-RL Delay-Aware Multipath Scheduler',
+    title: 'LSMeta-DAMS: Meta-RL Delay-Aware Multipath Scheduler',
     goal: 'Overcome the slow convergence of RL-based schedulers, which fail when network conditions shift faster than models can retrain.',
     solution:
       'Developed a hybrid meta-reinforcement learning scheduler that learns an adaptation prior across network environments, fine-tuning to unseen conditions within a few gradient steps.',
@@ -95,7 +95,7 @@ const ericssonProjects: GsiItem[] = [
 
 const selectedProjects: GsiItem[] = [
   {
-    title: 'Course Scheduler — Project Manager, University of Victoria',
+    title: 'Course Scheduler · Project Manager, University of Victoria',
     note: 'May – Aug 2023',
     goal: 'Canadian universities relied on manual, conflict-prone course scheduling that took weeks per term.',
     solution:
@@ -104,7 +104,7 @@ const selectedProjects: GsiItem[] = [
       'Reduced scheduling conflicts by 70% and compressed scheduling time from 3 weeks to 2 days.',
   },
   {
-    title: 'WARP Full-Duplex Algorithm — TÜBİTAK & Sabancı University, Istanbul',
+    title: 'WARP Full-Duplex Algorithm · TÜBİTAK & Sabancı University, Istanbul',
     note: 'Oct 2020 – Aug 2021',
     goal: 'Half-duplex operation in the 802.11 reference design left substantial wireless capacity unused on WARP hardware.',
     solution:
@@ -112,7 +112,7 @@ const selectedProjects: GsiItem[] = [
     impact: 'Achieved a 45% throughput increase and 37% latency reduction over the half-duplex baseline.',
   },
   {
-    title: 'SDN Infrastructure & Implementation — Isfahan University of Technology',
+    title: 'SDN Infrastructure & Implementation · Isfahan University of Technology',
     note: 'Summer 2018',
     goal: 'Legacy campus networking was costly to operate, slow to reconfigure, and difficult to scale.',
     solution:
@@ -155,7 +155,7 @@ const statusLabels: Record<string, string> = {
 
 <BaseLayout
   title="CV"
-  description={`Curriculum vitae of ${profile.name} — education, research, professional experience, publications, and skills.`}
+  description={`Curriculum vitae of ${profile.name}: education, research, professional experience, publications, and skills.`}
 >
   <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
     <SectionHeader
@@ -230,7 +230,7 @@ const statusLabels: Record<string, string> = {
       </h2>
       <div class="flex flex-wrap items-baseline justify-between gap-2">
         <h3 class="font-bold text-slate-900 dark:text-white">
-          University of Victoria — Doctoral Research
+          University of Victoria · Doctoral Research
         </h3>
         <span class="text-sm text-slate-400 dark:text-slate-500">2021 – Present</span>
       </div>
@@ -280,7 +280,7 @@ const statusLabels: Record<string, string> = {
       </h2>
       <div class="flex flex-wrap items-baseline justify-between gap-2">
         <h3 class="font-bold text-slate-900 dark:text-white">
-          Ericsson — Global AI Accelerator (GAIA)
+          Ericsson · Global AI Accelerator (GAIA)
         </h3>
         <span class="text-sm text-slate-400 dark:text-slate-500">
           Montreal, Canada · Jan 2025 – Dec 2025
@@ -328,7 +328,7 @@ const statusLabels: Record<string, string> = {
         <span class="text-sm text-slate-400 dark:text-slate-500">2021 – Present</span>
       </div>
       <p class="mt-0.5 text-sm font-medium text-brand-600 dark:text-brand-400">
-        Teaching Assistant — 8 courses across systems, networking, and software engineering
+        Teaching Assistant, 8 courses across systems, networking, and software engineering
       </p>
       <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
         <li>{teachingCourses}.</li>

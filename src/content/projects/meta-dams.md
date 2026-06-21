@@ -14,7 +14,7 @@ order: 3
 
 ## Goal
 
-Hand-tuned multipath schedulers (minRTT, round-robin) cannot cope with path asymmetry, loss patterns, and bandwidth fluctuations — and a single learned policy fails when deployed in network conditions it never saw during training.
+Hand-tuned multipath schedulers (minRTT, round-robin) cannot cope with path asymmetry, loss patterns, and bandwidth fluctuations, and a single learned policy fails when deployed in network conditions it never saw during training.
 
 ## My Solution
 

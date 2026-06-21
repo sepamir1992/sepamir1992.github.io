@@ -2,9 +2,9 @@
 #
 # AUTHENTICATION (one-time setup, see README "CMS authentication"):
 #   GitHub's OAuth flow needs a tiny token-exchange service. Two free options:
-#   1. Cloudflare Worker OAuth proxy (recommended, free) — then set
+#   1. Cloudflare Worker OAuth proxy (recommended, free): then set
 #      `base_url` below to your worker URL.
-#   2. Netlify OAuth gateway — create a free Netlify site linked to this repo,
+#   2. Netlify OAuth gateway: create a free Netlify site linked to this repo,
 #      add a GitHub OAuth app in Netlify settings, and remove `base_url`.
 #
 # LOCAL EDITING (no auth needed):

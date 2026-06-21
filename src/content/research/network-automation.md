@@ -5,4 +5,4 @@ icon: chart
 order: 7
 ---
 
-I build systems that turn raw network telemetry into action — forecasting dashboards, anomaly-aware automation, and closed-loop control that reduces manual operations effort.
+I build systems that turn raw network telemetry into action: forecasting dashboards, anomaly-aware automation, and closed-loop control that reduces manual operations effort.

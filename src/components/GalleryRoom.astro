@@ -14,7 +14,7 @@ const plaqueLine = (photo: CollectionEntry<'photos'>) =>
 
 <div class="gallery-room relative overflow-hidden rounded-3xl border border-slate-200 shadow-xl dark:border-ink-800">
   <!-- Scrollable room -->
-  <div id="gallery-scroll" class="gallery-scroll overflow-x-auto overflow-y-hidden" tabindex="0" aria-label="Photo gallery room — scroll horizontally to walk through">
+  <div id="gallery-scroll" class="gallery-scroll overflow-x-auto overflow-y-hidden" tabindex="0" aria-label="Photo gallery room, scroll horizontally to walk through">
     <div class="gallery-track flex min-w-max items-end">
       <!-- Entrance panel -->
       <div class="gallery-intro flex shrink-0 flex-col justify-center px-10 sm:px-14" aria-hidden="true">
@@ -120,7 +120,7 @@ const plaqueLine = (photo: CollectionEntry<'photos'>) =>
 </div>
 
 <style>
-  /* Room palette — daylight gallery by default, night gallery in dark mode */
+  /* Room palette: daylight gallery by default, night gallery in dark mode */
   .gallery-room {
     --wall-hi: #f3eee5;
     --wall-lo: #e6dfd2;

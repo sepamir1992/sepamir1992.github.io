@@ -18,7 +18,7 @@ Adapt multipath video streaming to heterogeneous, fast-changing network conditio
 
 ## My Solution
 
-Built a hierarchical federated learning protocol with **distributed meta-models at edge servers**, enabling clients to personalize schedulers locally while sharing only model updates — never raw network traces.
+Built a hierarchical federated learning protocol with **distributed meta-models at edge servers**, enabling clients to personalize schedulers locally while sharing only model updates, never raw network traces.
 
 ## Impact
 
